@@ -28,6 +28,9 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 
+AUTH_USER_MODEL="acoounts.User"
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core'
+    'core',
+    'acoounts',
+    "product"
 ]
 
 MIDDLEWARE = [
@@ -117,6 +122,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+
 
 STATICFILES_DIRS=[
     BASE_DIR / "static"
