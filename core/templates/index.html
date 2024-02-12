@@ -1,8 +1,12 @@
 {% extends 'base.html'%}
-{% load static %}
+{% load static custom_tags %}
+
 
 
 {%block content%}
+
+{% recent_blogs%}
+
     <section class="home-slider owl-carousel">
         <div class="slider-item">
             <div class="container">
@@ -51,6 +55,7 @@
             <div class="row">
                 <div class="col-md-7 heading-section ftco-animate">
                     <h2 class="mb-4"><span>Recent Stories</span></h2>
+                 
                 </div>
             </div>
             <div class="row">
@@ -325,7 +330,8 @@
                 </div>
             </div>
         </div>
-    </section>
+  
+
 
 
     <section class="ftco-subscribe ftco-section bg-light">

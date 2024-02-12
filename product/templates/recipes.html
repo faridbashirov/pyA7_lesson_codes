@@ -1,5 +1,5 @@
 {%extends "base.html"%}
-{%load static%}
+{% load static filter_tags %}
 {%block content%}
 <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_4.jpg');">
     <div class="overlay"></div>
@@ -25,18 +25,22 @@
                     <div class="col-md-6 col-lg-12 ftco-animate">
                         <div class="blog-entry d-lg-flex">
                             <div class="half">
-                                <a href="single.html" class="img d-flex align-items-end"
+                                <a href="{% url 'recipe_detail' recipe.id  %}" class="img d-flex align-items-end"
                                    style="background-image: url({{recipe.image.url}});">
                                     <div class="overlay"></div>
+                                    <img src={{recipe.image.url}} alt="">
                                 </a>
                             </div>
+                            {% for image in recipe1.recipe.all%}
+                            {{image}}
+                            {%endfor%}
                             <div class="text px-md-4 px-lg-5 half pt-3">
                                 <p class="meta d-flex"><span class="pr-3">{{recipe.category.title}}</span><span class="ml-auto pl-3">{{recipe.created_at}}</span>
                                 </p>
                                 <h3><a href="single.html">{{recipe.title}}</a></h3>
-                                <p>{{recipe.description}}
+                                <p>{{recipe.description|truncatechars:100}}
                                 </p>
-                                <p class="mb-0"><a href="single.html" class="btn btn-primary">Read More <span
+                                <p class="mb-0"><a href="{% url 'recipe_detail' recipe.id  %}" class="btn btn-primary">Read More <span
                                         class="icon-arrow_forward ml-4"></span></a></p>
                             </div>
                         </div>

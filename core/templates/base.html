@@ -1,4 +1,4 @@
-{%load static%}
+{%load static custom_tags %}
 <!DOCTYPE html>
 
 <html lang="en">
@@ -88,12 +88,12 @@
                 <div class="col-md">
                     <div class="ftco-footer-widget mb-4">
                         <h2 class="ftco-heading-2">Categories</h2>
+                        {% get_categories 5  as categories%}
                         <ul class="list-unstyled">
-                            <li><a href="#" class="py-2 d-block">Food</a></li>
-                            <li><a href="#" class="py-2 d-block">Restaurant</a></li>
-                            <li><a href="#" class="py-2 d-block">Dessert</a></li>
-                            <li><a href="#" class="py-2 d-block">Lifestyle</a></li>
-                            <li><a href="#" class="py-2 d-block">Recipes</a></li>
+
+                            {%for category in categories%}
+                            <li><a href="#" class="py-2 d-block">{{category.title}}</a></li>
+                            {% endfor%}
                         </ul>
                     </div>
                 </div>

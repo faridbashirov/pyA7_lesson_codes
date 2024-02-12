@@ -1,5 +1,5 @@
 {% extends "base.html"%}
-{% load static%}
+{% load static custom_tags filter_tags %}
 {%block title%}
 Contact
 {%endblock%}
@@ -120,5 +120,6 @@ Contact
             </div>
         </div>
     </section>
+    {% recent_blogs%}
     {%endblock%}
 

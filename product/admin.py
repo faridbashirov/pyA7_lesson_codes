@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django import forms
 from .models import Recipe,Category,Tag,RecipeImages
-admin.site.register([Category,Tag])
+
+admin.site.register([Category,Tag,RecipeImages])
 
 
 class RecipeForm(forms.ModelForm):
@@ -9,33 +10,50 @@ class RecipeForm(forms.ModelForm):
         model=Recipe
         fields=("tag",)
         widgets={
-            "tag":forms.CheckboxSelectMultiple
+            "tag":forms.CheckboxSelectMultiple()
         }
+        
+
+
 class RecipeImagesInline(admin.TabularInline):
     model=RecipeImages
 
+
 @admin.register(Recipe)
-class RecipAdmin(admin.ModelAdmin):
+class RecipeAdmin(admin.ModelAdmin):
     form=RecipeForm
-    inlines=[RecipeImagesInline]
-    list_display=["title","description","category"]
-    list_display_links=("title","description",)
-    list_editable=("category",)
+    list_display=("title","category","description",)
+    list_display_links=("description","title",)
     list_filter=("category",)
-    search_fields=("title",)
-    prepopulated_fields={
-        "slug":("title",)
-    }
+    search_fields=("title","category__title")
+    list_editable=("category",)
+    # list_per_page=1
+    inlines=[RecipeImagesInline]
     fieldsets=((
         "Information",{
-            "fields":("title","description","image","slug","user",)
-            
+            "fields":("title","description",)
         }
     ),
-    ("Related Fields",{
-        "fields":("tag","category",)
-    })
+    (
+        "Related Fields",{
+            "fields":("user","category","tag")
+        }
+
+    ),
+   
     )
+
+
+
+
+
+
+
+
+
+
+
+  
 
 
     

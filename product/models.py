@@ -50,17 +50,15 @@ class Recipe(AbstractClass):
     description=models.TextField()
     image=models.ImageField(upload_to="recipe")
     user=models.ForeignKey(User,on_delete=models.CASCADE)
-    category=models.ForeignKey(Category,on_delete=models.CASCADE)
+    category=models.ForeignKey(Category,on_delete=models.CASCADE,related_name="recipe")
     tag=models.ManyToManyField(Tag)
-    slug=models.SlugField(null=True,blank=True)
+  
+    field2=models.TextField(null=True,blank=True)
 
     def __str__(self):
         return self.title
     
-    # def save(self):
-    #     self.slug=slugify(self.title)
-
-    #     return super().save()
+   
     
 
 
