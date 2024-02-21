@@ -1,6 +1,7 @@
 {%extends "base.html"%}
 {% load static filter_tags %}
 {%block content%}
+{% include "includes/messages.html"%}
 <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_4.jpg');">
     <div class="overlay"></div>
     <div class="container">
@@ -42,6 +43,8 @@
                                 </p>
                                 <p class="mb-0"><a href="{% url 'recipe_detail' recipe.id  %}" class="btn btn-primary">Read More <span
                                         class="icon-arrow_forward ml-4"></span></a></p>
+                                        <p class="mb-0"><a href="{% url 'like' recipe.id %}" class="btn btn-primary" style="margin-top: 20px;">Like <span
+                                            class="icon-arrow_forward ml-4"></span></a></p>
                             </div>
                         </div>
                     </div>
