@@ -3,6 +3,7 @@ from product.models import Recipe,Category
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 def liked_recipes(request):
     liked_recipes= request.session.get("liked_recipes","").split(",") #[1,2,3,4,5,""]
@@ -19,7 +20,7 @@ def liked_recipes(request):
 
     return render(request,"liked_recipes.html",context)
 
-
+@login_required
 def recipes(request):
     recipes=Recipe.objects.all()# select * from Recipes
     category=Category.objects.all()# select * from Categories
