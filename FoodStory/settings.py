@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'acoounts',
-    'product'
+    'product',
+    'social_django'
 ]
 
 MIDDLEWARE = [
@@ -91,6 +92,26 @@ DATABASES = {
     }
 }
 
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER ='fixzone554@gmail.com'
+EMAIL_HOST_PASSWORD = 'gjaswmrfizgsjtup'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = "577672569450-nljjef8fgogjv1c4joto1ed51ag0h8u4.apps.googleusercontent.com"
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = "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"
+
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_URL = 'logout'
+LOGOUT_REDIRECT_URL = 'login'
+
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
