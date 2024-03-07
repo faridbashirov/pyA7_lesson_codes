@@ -3,11 +3,16 @@ from django.urls import reverse_lazy
 from django.http import HttpResponse
 from product.models import Category
 from core.forms import ContactForm
+from core.models import Contact
 from django.contrib import messages
+from django.views.generic import TemplateView,CreateView
 
-def home(request):
+# def home(request):
 
-    return render(request,"index.html")
+#     return render(request,"index.html")
+
+class HomeView(TemplateView):
+    template_name ="index.html"
 
 def contact(request):
     form=ContactForm()
@@ -27,6 +32,16 @@ def contact(request):
 
     return render(request,"contact.html",context)
 
+
+class ContactView(CreateView):
+    template_name="contact.html"
+    form_class=ContactForm
+    model=Contact
+    success_url=reverse_lazy("contact")
+
+    def get_success_url(self) -> str:
+        messages.add_message(self.request, messages.INFO, "Ugurlu gonderildi!!")
+        return super().get_success_url()
 
 def about(request):
     return render(request,"about.html")

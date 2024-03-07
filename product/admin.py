@@ -1,8 +1,8 @@
 from django.contrib import admin
 from django import forms
-from .models import Recipe,Category,Tag,RecipeImages
+from .models import Recipe,Category,Tag,RecipeImages,RecipeReview
 
-admin.site.register([Category,Tag,RecipeImages])
+admin.site.register([Category,Tag,RecipeImages,RecipeReview])
 
 
 class RecipeForm(forms.ModelForm):
@@ -31,7 +31,7 @@ class RecipeAdmin(admin.ModelAdmin):
     inlines=[RecipeImagesInline]
     fieldsets=((
         "Information",{
-            "fields":("title","description",)
+            "fields":("title","description","image",)
         }
     ),
     (

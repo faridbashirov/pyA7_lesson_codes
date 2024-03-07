@@ -17,6 +17,8 @@ User=get_user_model()
 
 # https://simpleisbetterthancomplex.com/tutorial/2017/02/18/how-to-create-user-sign-up-view.html
 # https://medium.com/@namantam1/login-with-facebook-and-google-in-django-using-social-auth-app-django-d042bfeb04cb
+# https://medium.com/geekculture/django-social-authentication-sign-in-with-facebook-eb52c384e1d
+
 def login(request, *args, **kwargs):
     form=LoginForm()
 

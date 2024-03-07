@@ -2,6 +2,7 @@ from collections.abc import Iterable
 from django.db import models
 from django.contrib.auth import get_user_model
 from slugify import slugify
+from django.urls import reverse_lazy
 
 User=get_user_model()
 
@@ -42,7 +43,10 @@ class RecipeImages(AbstractClass):
     recipe=models.ForeignKey("Recipe",on_delete=models.CASCADE,related_name="recipe")
 
 
-
+class RecipeReview(AbstractClass):
+    message=models.TextField()
+    user=models.ForeignKey(User,on_delete=models.CASCADE,related_name="reviews")
+    recipe=models.ForeignKey("Recipe",on_delete=models.CASCADE,related_name="recipe_reviews")
 
 class Recipe(AbstractClass):
     title=models.CharField(max_length=255)
@@ -57,6 +61,9 @@ class Recipe(AbstractClass):
 
     def __str__(self):
         return self.title
+    
+    def  get_absolute_url(self):
+        return reverse_lazy("recipe_detail",kwargs={"pk":self.id})
     
    
     
