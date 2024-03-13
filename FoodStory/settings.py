@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'social_django'
 ]
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -55,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'FoodStory.middleware.blacklist_ip.Blacklist'
 ]
 
 ROOT_URLCONF = 'FoodStory.urls'

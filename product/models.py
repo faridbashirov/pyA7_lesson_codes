@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from slugify import slugify
 from django.urls import reverse_lazy
+from slugify import slugify
 
 User=get_user_model()
 
@@ -54,16 +55,17 @@ class Recipe(AbstractClass):
     description=models.TextField()
     image=models.ImageField(upload_to="recipe")
     user=models.ForeignKey(User,on_delete=models.CASCADE)
+    slug=models.SlugField(max_length=255,null=True,blank=True)
     category=models.ForeignKey(Category,on_delete=models.CASCADE,related_name="recipe")
     tag=models.ManyToManyField(Tag)
-  
-    field2=models.TextField(null=True,blank=True)
+
 
     def __str__(self):
         return self.title
     
     def  get_absolute_url(self):
-        return reverse_lazy("recipe_detail",kwargs={"pk":self.id})
+        return reverse_lazy("recipe_detail",kwargs={"slug":self.slug})
+  
     
    
     

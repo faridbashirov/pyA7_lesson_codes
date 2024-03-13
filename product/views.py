@@ -84,7 +84,7 @@ class RecipeDetailView(FormMixin,DetailView):
    
 
      def get_success_url(self):
-        return reverse_lazy("recipe_detail", kwargs={"pk": self.object.id})
+        return reverse_lazy("recipe_detail", kwargs={"slug": self.object.slug})
      
 
      def post(self, request, *args, **kwargs):
@@ -138,8 +138,6 @@ class RecipeCreateView(CreateView):
 
 class RecipeUpdateView(UpdateView):
      template_name="update_recipe.html"
-     model=Recipe
-     form_class=RecipeCreateForm
-     queryset=Recipe.objects.all()
+ 
 
 

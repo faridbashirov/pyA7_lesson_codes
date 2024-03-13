@@ -31,7 +31,7 @@ class RecipeAdmin(admin.ModelAdmin):
     inlines=[RecipeImagesInline]
     fieldsets=((
         "Information",{
-            "fields":("title","description","image",)
+            "fields":("title","description","image","slug")
         }
     ),
     (
