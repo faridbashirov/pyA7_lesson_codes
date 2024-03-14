@@ -61,7 +61,7 @@ class Recipe(AbstractClass):
 
 
     def __str__(self):
-        return self.title
+        return str(self.slug)
     
     def  get_absolute_url(self):
         return reverse_lazy("recipe_detail",kwargs={"slug":self.slug})

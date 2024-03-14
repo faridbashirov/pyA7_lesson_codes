@@ -29,7 +29,7 @@ Contact
             <div class="row block-9">
                 <div class="col-md-6 order-md-last d-flex">
                     <form action="{% url 'contact'%}" method="POST"  class="bg-light p-5 contact-form">
-                        <!-- {%csrf_token%} -->
+                        {%csrf_token%}
 
                         {% for field in form%}
                         <div class="form-group">

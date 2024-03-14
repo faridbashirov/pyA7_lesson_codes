@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.urls import reverse_lazy
 from django.http import HttpResponse
 from product.models import Category
+from django.utils.translation import gettext as _
 from core.forms import ContactForm
 from core.models import Contact
 from django.contrib import messages
@@ -40,7 +41,7 @@ class ContactView(CreateView):
     success_url=reverse_lazy("contact")
 
     def get_success_url(self) -> str:
-        messages.add_message(self.request, messages.INFO, "Ugurlu gonderildi!!")
+        messages.add_message(self.request, messages.INFO, _("Ugurlu gonderildi!!"))
         return super().get_success_url()
 
 def about(request):

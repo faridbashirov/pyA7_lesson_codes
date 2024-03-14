@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'core',
     'acoounts',
     'product',
-    'social_django'
+    'social_django',
+     'modeltranslation',
 ]
 
 
@@ -52,6 +53,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -139,6 +141,12 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
+LANGUAGES = (
+    ('en-us', 'English'),
+    ('ru', 'Russian'),
+    ('az','Azerbaijan')
+)
+
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
@@ -159,6 +167,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 
 STATICFILES_DIRS=[
     BASE_DIR / "static"
+]
+
+LOCALE_PATHS=[
+    BASE_DIR / "locale"
 ]
 
 # Default primary key field type
