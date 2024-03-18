@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'acoounts',
     'product',
     'social_django',
-     'modeltranslation',
+    'modeltranslation',
+    'rest_framework',
 ]
 
 
